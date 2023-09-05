@@ -2,14 +2,17 @@ const axios = require('axios')
 const fs = require('fs')
 const FormData = require('form-data')
 const authorizationToken = process.env.AUTH_TOKEN
-const url = 'https://api.stage.veeve-cms.cowlar.com/categories'
+const url = 'https://api.stage.veeve-cms.cowlar.com/deals'
 
 const form = new FormData()
 
 const imagePath = 'imagg.png'
 
-form.append('storeId', '36')
+form.append('categoryId', '36')
+form.append('subCategoryId', '14')
 form.append('name', 'testtest2asdfasdfasdfasdfdasfa2s')
+form.append('description', 'description of deals')
+form.append('')
 form.append('link', 'asdf.com')
 
 // Read the image file
