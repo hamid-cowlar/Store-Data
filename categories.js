@@ -1,19 +1,13 @@
-require('dotenv').config()
 const axios = require('axios')
 const fs = require('fs')
 const FormData = require('form-data')
-let edekaData = require('./EdekaData.json')
-const authorizationToken = process.env.AUTH_TOKEN
-const url = 'http://localhost:5001/api/v1/categories'
 
-const storeId = 1
 let name
 let nameArr = []
 
-;(async () => {
-  for (const data of edekaData) {
+const categoryFunc = async (url, authorizationToken, storeId, jsonFile) => {
+  for (const data of jsonFile) {
     name = data.CategoryTitle
-    console.log(nameArr)
     if (nameArr.includes(name)) continue
     nameArr.push(name)
     const logo =
@@ -40,7 +34,7 @@ let nameArr = []
     try {
       const response = await axios.post(url, form, { headers })
       console.log(response.data)
-      edekaData = edekaData.map((edata) => {
+      jsonFile = jsonFile.map((edata) => {
         if (edata.CategoryTitle == response.data.data.name) {
           return {
             ...edata,
@@ -65,7 +59,9 @@ let nameArr = []
   }
   fs.writeFileSync(
     './EdekaData.json',
-    JSON.stringify(edekaData, null, 2),
+    JSON.stringify(jsonFile, null, 2),
     'utf-8'
   )
-})()
+}
+
+module.exports = categoryFunc

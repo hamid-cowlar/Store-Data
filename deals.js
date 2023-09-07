@@ -45,3 +45,5 @@ axios
       console.error('Error:', error.message)
     }
   })
+
+//module.exports = subCategoriesFunc
