@@ -1,10 +1,10 @@
 const axios = require('axios')
 const fs = require('fs')
 const FormData = require('form-data')
-
+const path = require('path')
 let name
 let nameArr = []
-
+let defaultVideo = './default.mp4'
 const categoryFunc = async (url, authorizationToken, storeId, jsonFile) => {
   for (const data of jsonFile) {
     name = data.CategoryTitle
@@ -14,21 +14,33 @@ const categoryFunc = async (url, authorizationToken, storeId, jsonFile) => {
       './Images/' +
       data.Subcategories[0].productItems[0].local_image_path +
       '.jpg'
-    const link = 'www.test.com'
+    const link = data.link
     const form = new FormData()
+    let videoPath = data.local_video_path
     const headers = {
       ...form.getHeaders(),
       Authorization: authorizationToken,
     }
+    if (!!link) {
+      form.append('link', link)
+    } else {
+      if (!videoPath) {
+        videoPath = defaultVideo
+      }
+      console.log(videoPath)
+      const video = fs.createReadStream(videoPath)
+      form.append('mediaContent', video, {
+        filename: path.basename(videoPath),
+        contentType: 'video/mp4',
+      })
+    }
     form.append('storeId', storeId)
     form.append('name', name)
-    form.append('link', link)
 
     // Read the image file
     const image = fs.createReadStream(logo)
-
     form.append('logo', image, {
-      filename: logo,
+      filename: path.basename(logo),
       contentType: 'image/jpg',
     })
     try {
