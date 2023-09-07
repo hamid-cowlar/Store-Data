@@ -27,7 +27,6 @@ const categoryFunc = async (url, authorizationToken, storeId, jsonFile) => {
       if (!videoPath) {
         videoPath = defaultVideo
       }
-      console.log(videoPath)
       const video = fs.createReadStream(videoPath)
       form.append('mediaContent', video, {
         filename: path.basename(videoPath),

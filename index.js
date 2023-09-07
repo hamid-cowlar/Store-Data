@@ -11,8 +11,8 @@ const deleteArrAPIFunc = require('./deleteArrAPI')
 //constants
 const authorizationToken = process.env.AUTH_TOKEN
 
-const subCategoriesUrl = 'http://localhost:5001/api/v1/subcategories'
 const categoryUrl = 'http://localhost:5001/api/v1/categories'
+const subCategoriesUrl = 'http://localhost:5001/api/v1/subcategories'
 const dealsUrl = 'http://localhost:5001/api/v1/deals'
 
 /*
@@ -21,7 +21,7 @@ SubCategory : 2
 deals : 3
 */
 
-const runapi = 1
+const runapi = 2
 
 const storeId = 1
 
@@ -52,19 +52,18 @@ SubCategory : 2
 deals : 3
 */
 const deleteAPI = 0
-console.log(generateIntegerArray(88, 95))
 switch (deleteAPI) {
   case 1:
     deleteArrAPIFunc(
       categoryUrl,
-      generateIntegerArray(88, 95),
+      generateIntegerArray(96, 108),
       authorizationToken
     )
     break
   case 2:
     deleteArrAPIFunc(
       subCategoriesUrl,
-      generateIntegerArray(88, 95),
+      generateIntegerArray(85, 112),
       authorizationToken
     )
     break
