@@ -23,10 +23,10 @@ const dealsFunc = async (url, authorizationToken, jsonFile) => {
         form.append('description', data.description ?? '')
 
         // Not Required Fields
-        if (!!subCategoryId) {
+        if (subCategoryId) {
           form.append('subCategoryId', subCategoryId)
         }
-        if (!!data.originalPrice) {
+        if (data.originalPrice) {
           form.append('originalPrice', data.originalPrice)
         }
 
