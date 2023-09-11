@@ -4,6 +4,7 @@ const { generateIntegerArray } = require('./utils')
 // Program for API Calls
 const categoryFunc = require('./categories')
 const subCategoriFunc = require('./subCategories')
+const dealsFunc = require('./deals')
 let edekaData = require('./EdekaData.json')
 
 // Program to Delete without API call
@@ -20,7 +21,7 @@ Category : 1
 SubCategory : 2
 deals : 3
 */
-const runapi = 2
+const runapi = 3
 const storeId = 1
 
 switch (runapi) {
@@ -31,7 +32,7 @@ switch (runapi) {
     subCategoriFunc(subCategoriesUrl, authorizationToken, storeId, edekaData)
     break
   case 3:
-    //dealsFunc(dealsUrl, authorizationToken, storeId, edekaData)
+    dealsFunc(dealsUrl, authorizationToken, edekaData)
     break
   default:
     console.log(
@@ -49,7 +50,7 @@ Category : 1
 SubCategory : 2
 deals : 3
 */
-const deleteAPI = 0
+const deleteAPI = 3
 switch (deleteAPI) {
   case 1:
     deleteArrAPIFunc(
@@ -66,7 +67,7 @@ switch (deleteAPI) {
     )
     break
   case 3:
-    //deleteArrAPIFunc(dealsURL, generateIntegerArray(88, 95), authorizationToken)
+    deleteArrAPIFunc(dealsUrl, generateIntegerArray(30, 58), authorizationToken)
     break
   default:
     console.log('nothing to delete')
