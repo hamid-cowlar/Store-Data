@@ -2,9 +2,8 @@ const axios = require('axios')
 const fs = require('fs')
 const FormData = require('form-data')
 const path = require('path')
-function delay(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms))
-}
+const { delay } = require('../utils')
+
 const subCategoriesFunc = async (
   url,
   authorizationToken,

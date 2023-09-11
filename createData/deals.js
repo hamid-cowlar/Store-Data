@@ -2,10 +2,7 @@ const axios = require('axios')
 const fs = require('fs')
 const FormData = require('form-data')
 const path = require('path')
-function delay(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms))
-}
-
+const { delay } = require('../utils')
 const dealsFunc = async (url, authorizationToken, jsonFile) => {
   for (const categoryData of jsonFile) {
     let categoryId = categoryData.categoryId
@@ -41,7 +38,7 @@ const dealsFunc = async (url, authorizationToken, jsonFile) => {
             contentType: `image/${path.extname(logo).slice(1)}`,
           })
         }
-        await delay(1000)
+        await delay(2000)
         try {
           const response = await axios.post(url, form, { headers })
           console.log(response.data)
