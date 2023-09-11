@@ -2,6 +2,9 @@ const axios = require('axios')
 const fs = require('fs')
 const FormData = require('form-data')
 const path = require('path')
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
 const subCategoriesFunc = async (
   url,
   authorizationToken,
@@ -9,11 +12,13 @@ const subCategoriesFunc = async (
   jsonFile,
   filePath
 ) => {
+  let previousName
+
   for (const data of jsonFile) {
     let categoryId = data.categoryId
     for (const innerData of data.Subcategories) {
       if ('default_subcategory' === innerData.subcategoryTitle) continue
-      const logo = '../Images/' + innerData.productItems[1].local_image_path
+      const logo = innerData.logo
       const form = new FormData()
       const headers = {
         ...form.getHeaders(),
@@ -21,7 +26,9 @@ const subCategoriesFunc = async (
       }
       form.append('storeId', storeId)
       form.append('categoryId', categoryId)
-      form.append('name', innerData.subcategoryTitle)
+      if (previousName == innerData.subcategoryTitle) continue
+      previousName = innerData.subcategoryTitle
+      form.append('name', previousName)
 
       if (innerData.mediaContent) {
         const video = fs.createReadStream(innerData.mediaContent)
@@ -38,7 +45,7 @@ const subCategoriesFunc = async (
         filename: path.basename(logo),
         contentType: `image/${path.extname(logo).slice(1)}`,
       })
-
+      await delay(1000)
       try {
         const response = await axios.post(url, form, { headers })
         console.log(response.data)

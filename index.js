@@ -1,6 +1,6 @@
 require('dotenv').config()
 //Json File Path
-const filePath = './EdekaData.json'
+const filePath = './output.json'
 const {
   generateIntegerArray,
   deleteArrAPI: deleteArrAPIFunc,
@@ -11,13 +11,19 @@ const categoryFunc = require('./createData/categories')
 const subCategoriFunc = require('./createData/subCategories')
 const dealsFunc = require('./createData/deals')
 let edekaData = require(filePath)
-
+const env = ''
 //constants
-const authorizationToken = process.env.AUTH_TOKEN
-
-const categoryUrl = 'http://localhost:5001/api/v1/categories'
-const subCategoriesUrl = 'http://localhost:5001/api/v1/subcategories'
-const dealsUrl = 'http://localhost:5001/api/v1/deals'
+let authorizationToken = process.env.AUTH_TOKEN
+let mainURL =
+  env === 'stage'
+    ? 'https://api.stage.veeve-cms.cowlar.com'
+    : 'https://localhost:5001/api/v1'
+if (env === 'stage') {
+  authorizationToken = process.env.STAGE_TOKEN
+}
+const categoryUrl = `${mainURL}/categories`
+const subCategoriesUrl = `${mainURL}/subcategories`
+const dealsUrl = `${mainURL}/deals`
 
 /*
 Category : 1
@@ -71,12 +77,16 @@ switch (deleteAPI) {
   case 2:
     deleteArrAPIFunc(
       subCategoriesUrl,
-      generateIntegerArray(201, 229),
+      generateIntegerArray(409, 421),
       authorizationToken
     )
     break
   case 3:
-    deleteArrAPIFunc(dealsUrl, generateIntegerArray(30, 58), authorizationToken)
+    deleteArrAPIFunc(
+      dealsUrl,
+      generateIntegerArray(163, 256),
+      authorizationToken
+    )
     break
   default:
     console.log('nothing to delete')

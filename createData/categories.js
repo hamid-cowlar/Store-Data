@@ -4,7 +4,7 @@ const FormData = require('form-data')
 const path = require('path')
 let name
 let nameArr = []
-let defaultVideo = '../defaultData/default.mp4'
+let defaultVideo = './default.mp4'
 const categoryFunc = async (
   url,
   authorizationToken,
@@ -16,8 +16,7 @@ const categoryFunc = async (
     name = data.CategoryTitle
     if (nameArr.includes(name)) continue
     nameArr.push(name)
-    const logo =
-      '../Images/' + data.Subcategories[0].productItems[0].local_image_path
+    const logo = data.Subcategories[0].productItems[0].local_image_path
     const link = data.link
     const form = new FormData()
     let videoPath = data.mediaContent
@@ -34,7 +33,7 @@ const categoryFunc = async (
       const video = fs.createReadStream(videoPath)
       form.append('mediaContent', video, {
         filename: path.basename(videoPath),
-        contentType: `video/${path.extname(innerData.mediaContent).slice(1)}`,
+        contentType: `video/${path.extname(videoPath).slice(1)}`,
       })
     }
     form.append('storeId', storeId)

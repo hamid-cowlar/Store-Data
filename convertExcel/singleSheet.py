@@ -2,7 +2,7 @@ import pandas as pd
 import json
 
 # Load the data from Excel
-df = pd.read_excel('path_to_your_excel_file.xlsx', sheet_name="Unified Sheet")
+df = pd.read_excel('data.xlsx', sheet_name="Copy of Sheet1")
 
 categories_dict = {}
 
@@ -20,14 +20,13 @@ for _, row in df.iterrows():
 
     category = categories_dict[row['storeId']]
 
-    # Check if subcategory already exists
-    subcategory = next((sc for sc in category['SubcategoryTitle'] if sc['subcategoryId'] == row['subcategoryId']), None)
+    subcategory = next((sc for sc in category.get('SubcategoryTitle', []) if row.get('subcategoryId') and sc.get('subcategoryId') == row['subcategoryId']), None)
+
 
     # If not, create a new subcategory
     if not subcategory:
         subcategory = {
             "storeId": str(row['storeId']),
-            "subcategoryId": str(row['subcategoryId']),
             "subcategoryTitle": row['subcategoryTitle'],
             "logo": row['subcatLogo'],
             "mediaContent": row['subcatMediaContent'],
@@ -38,7 +37,6 @@ for _, row in df.iterrows():
     # Add product item to subcategory
     item_data = {
         "categoryId": str(row['storeId']),  # Assuming the storeId serves as the categoryId
-        "subCategoryId": str(row['subcategoryId']),
         "ItemTitle": row['ItemTitle'],
         "description": row['description'],
         "ItemPrice": row['ItemPrice'],
