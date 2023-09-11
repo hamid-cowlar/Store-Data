@@ -1,3 +1,3 @@
 const { generateIntegerArray } = require('./arrayUtils')
-
-module.exports = { generateIntegerArray }
+const { contentTypeMap } = require('./contentType')
+module.exports = { generateIntegerArray, contentTypeMap }

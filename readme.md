@@ -1,0 +1,1 @@
+Deals item 15 limit per subcategory

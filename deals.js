@@ -47,3 +47,73 @@ axios
   })
 
 //module.exports = subCategoriesFunc
+
+const dealsFunc = async (url, authorizationToken, storeId, jsonFile) => {
+  for (const categoryData of jsonFile) {
+    let categoryId = data.categoryId
+    for (const subCategoryData of data.Subcategories) {
+      let subCategoryId = subCategoryData.subCategoryId
+      for (const data of subCategoryData.productItems) {
+        if ('default_subcategory' === innerData.subcategoryTitle) continue
+        const logo = './Images/' + +'.jpg'
+        const link = 'www.testtt.com'
+        const form = new FormData()
+        const headers = {
+          ...form.getHeaders(),
+          Authorization: authorizationToken,
+        }
+        form.append('storeId', storeId)
+        if (!subCategoryId) {
+          form.append('categoryId', categoryId)
+        }
+        form.append('name', innerData.subcategoryTitle)
+        form.append('link', link)
+
+        // Read the image file
+        const image = fs.createReadStream(logo)
+
+        form.append('logo', image, {
+          filename: logo,
+          contentType: 'image/jpg',
+        })
+        try {
+          const response = await axios.post(url, form, { headers })
+          console.log(response.data)
+          jsonFile = jsonFile.map((edata) => {
+            return {
+              ...edata,
+              Subcategories: edata.Subcategories.map((innerdata) => {
+                if (innerdata.subcategoryTitle === response.data.data.name) {
+                  return { ...innerdata, subCategoryId: response.data.data.id }
+                }
+                return innerdata
+              }),
+            }
+          })
+        } catch (error) {
+          if (error.response) {
+            console.error(
+              'Server Error:',
+              error.response.status,
+              error.response.data
+            )
+          } else if (error.request) {
+            console.error('No Response from Server', error.message)
+          } else {
+            console.error('Error:', error.message)
+          }
+        }
+      }
+    }
+  }
+  //edekaData.forEach((dataa) => {
+  //  console.log(dataa)
+  //})
+  //fs.writeFileSync(
+  //  './EdekaData.json',
+  //  JSON.stringify(jsonFile, null, 2),
+  //  'utf-8'
+  //)
+}
+
+module.exports = dealsFunc

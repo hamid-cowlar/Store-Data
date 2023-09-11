@@ -13,7 +13,7 @@ const subCategoriesFunc = async (
     for (const innerData of data.Subcategories) {
       if ('default_subcategory' === innerData.subcategoryTitle) continue
       const logo =
-        './Images/' + innerData.productItems[0].local_image_path + '.jpg'
+        './Images/' + innerData.productItems[1].local_image_path + '.jpg'
       const link = 'www.testtt.com'
       const form = new FormData()
       const headers = {
@@ -61,14 +61,14 @@ const subCategoriesFunc = async (
       }
     }
   }
-  //edekaData.forEach((dataa) => {
-  //  console.log(dataa)
-  //})
-  //fs.writeFileSync(
-  //  './EdekaData.json',
-  //  JSON.stringify(jsonFile, null, 2),
-  //  'utf-8'
-  //)
+  jsonFile.forEach((dataa) => {
+    console.log(dataa)
+  })
+  fs.writeFileSync(
+    './EdekaData.json',
+    JSON.stringify(jsonFile, null, 2),
+    'utf-8'
+  )
 }
 
 module.exports = subCategoriesFunc

@@ -20,9 +20,7 @@ Category : 1
 SubCategory : 2
 deals : 3
 */
-
-const runapi = 2
-
+const runapi = 0
 const storeId = 1
 
 switch (runapi) {
@@ -56,14 +54,14 @@ switch (deleteAPI) {
   case 1:
     deleteArrAPIFunc(
       categoryUrl,
-      generateIntegerArray(96, 108),
+      generateIntegerArray(104, 225),
       authorizationToken
     )
     break
   case 2:
     deleteArrAPIFunc(
       subCategoriesUrl,
-      generateIntegerArray(85, 112),
+      generateIntegerArray(201, 229),
       authorizationToken
     )
     break

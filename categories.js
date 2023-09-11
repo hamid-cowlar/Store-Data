@@ -2,6 +2,7 @@ const axios = require('axios')
 const fs = require('fs')
 const FormData = require('form-data')
 const path = require('path')
+const { contentTypeMap } = require('./utils')
 let name
 let nameArr = []
 let defaultVideo = './default.mp4'
@@ -11,9 +12,7 @@ const categoryFunc = async (url, authorizationToken, storeId, jsonFile) => {
     if (nameArr.includes(name)) continue
     nameArr.push(name)
     const logo =
-      './Images/' +
-      data.Subcategories[0].productItems[0].local_image_path +
-      '.jpg'
+      './Images/' + data.Subcategories[0].productItems[0].local_image_path
     const link = data.link
     const form = new FormData()
     let videoPath = data.local_video_path
@@ -38,9 +37,17 @@ const categoryFunc = async (url, authorizationToken, storeId, jsonFile) => {
 
     // Read the image file
     const image = fs.createReadStream(logo)
+
+    // Get the file extension
+    const fileExtension = path.extname(imageFilePath)
+
+    // Determine the content type based on the file extension
+    const contentType =
+      contentTypeMap[fileExtension.toLowerCase()] || 'application/octet-stream'
+
     form.append('logo', image, {
       filename: path.basename(logo),
-      contentType: 'image/jpg',
+      contentType,
     })
     try {
       const response = await axios.post(url, form, { headers })
@@ -68,6 +75,7 @@ const categoryFunc = async (url, authorizationToken, storeId, jsonFile) => {
       }
     }
   }
+  console.log(jsonFile)
   fs.writeFileSync(
     './EdekaData.json',
     JSON.stringify(jsonFile, null, 2),
