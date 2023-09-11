@@ -1,11 +1,12 @@
 require('dotenv').config()
-
+//Json File Path
+const filePath = './EdekaData.json'
 const { generateIntegerArray } = require('./utils')
 // Program for API Calls
 const categoryFunc = require('./categories')
 const subCategoriFunc = require('./subCategories')
 const dealsFunc = require('./deals')
-let edekaData = require('./EdekaData.json')
+let edekaData = require(filePath)
 
 // Program to Delete without API call
 const deleteArrAPIFunc = require('./deleteArrAPI')
@@ -26,10 +27,16 @@ const storeId = 1
 
 switch (runapi) {
   case 1:
-    categoryFunc(categoryUrl, authorizationToken, storeId, edekaData)
+    categoryFunc(categoryUrl, authorizationToken, storeId, edekaData, filePath)
     break
   case 2:
-    subCategoriFunc(subCategoriesUrl, authorizationToken, storeId, edekaData)
+    subCategoriFunc(
+      subCategoriesUrl,
+      authorizationToken,
+      storeId,
+      edekaData,
+      filePath
+    )
     break
   case 3:
     dealsFunc(dealsUrl, authorizationToken, edekaData)
@@ -50,7 +57,7 @@ Category : 1
 SubCategory : 2
 deals : 3
 */
-const deleteAPI = 3
+const deleteAPI = 0
 switch (deleteAPI) {
   case 1:
     deleteArrAPIFunc(

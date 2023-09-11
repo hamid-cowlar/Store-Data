@@ -6,7 +6,13 @@ const { contentTypeMap } = require('./utils')
 let name
 let nameArr = []
 let defaultVideo = './default.mp4'
-const categoryFunc = async (url, authorizationToken, storeId, jsonFile) => {
+const categoryFunc = async (
+  url,
+  authorizationToken,
+  storeId,
+  jsonFile,
+  filePath
+) => {
   for (const data of jsonFile) {
     name = data.CategoryTitle
     if (nameArr.includes(name)) continue
@@ -75,11 +81,7 @@ const categoryFunc = async (url, authorizationToken, storeId, jsonFile) => {
       }
     }
   }
-  fs.writeFileSync(
-    './EdekaData.json',
-    JSON.stringify(jsonFile, null, 2),
-    'utf-8'
-  )
+  fs.writeFileSync(filePath, JSON.stringify(jsonFile, null, 2), 'utf-8')
 }
 
 module.exports = categoryFunc

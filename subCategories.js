@@ -7,7 +7,8 @@ const subCategoriesFunc = async (
   url,
   authorizationToken,
   storeId,
-  jsonFile
+  jsonFile,
+  filePath
 ) => {
   for (const data of jsonFile) {
     let categoryId = data.categoryId
@@ -73,11 +74,7 @@ const subCategoriesFunc = async (
   jsonFile.forEach((dataa) => {
     console.log(dataa)
   })
-  fs.writeFileSync(
-    './EdekaData.json',
-    JSON.stringify(jsonFile, null, 2),
-    'utf-8'
-  )
+  fs.writeFileSync(filePath, JSON.stringify(jsonFile, null, 2), 'utf-8')
 }
 
 module.exports = subCategoriesFunc
