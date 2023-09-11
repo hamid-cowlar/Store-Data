@@ -1,7 +1,6 @@
 const axios = require('axios')
 const fs = require('fs')
 const FormData = require('form-data')
-const { contentTypeMap } = require('./utils')
 const path = require('path')
 const subCategoriesFunc = async (
   url,
@@ -14,8 +13,7 @@ const subCategoriesFunc = async (
     let categoryId = data.categoryId
     for (const innerData of data.Subcategories) {
       if ('default_subcategory' === innerData.subcategoryTitle) continue
-      const logo = './Images/' + innerData.productItems[1].local_image_path
-      const link = 'www.testtt.com'
+      const logo = '../Images/' + innerData.productItems[1].local_image_path
       const form = new FormData()
       const headers = {
         ...form.getHeaders(),
@@ -24,22 +22,21 @@ const subCategoriesFunc = async (
       form.append('storeId', storeId)
       form.append('categoryId', categoryId)
       form.append('name', innerData.subcategoryTitle)
-      form.append('link', link)
+
+      if (innerData.mediaContent) {
+        const video = fs.createReadStream(innerData.mediaContent)
+        form.append('mediaContent', video, {
+          filename: path.basename(innerData.mediaContent),
+          contentType: `video/${path.extname(innerData.mediaContent).slice(1)}`,
+        })
+      }
 
       // Read the image file
       const image = fs.createReadStream(logo)
 
-      // Get the file extension
-      const fileExtension = path.extname(logo)
-
-      // Determine the content type based on the file extension
-      const contentType =
-        contentTypeMap[fileExtension.toLowerCase()] ||
-        'application/octet-stream'
-
       form.append('logo', image, {
         filename: path.basename(logo),
-        contentType,
+        contentType: `image/${path.extname(logo).slice(1)}`,
       })
 
       try {

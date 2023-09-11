@@ -1,15 +1,17 @@
 require('dotenv').config()
 //Json File Path
 const filePath = './EdekaData.json'
-const { generateIntegerArray } = require('./utils')
+const {
+  generateIntegerArray,
+  deleteArrAPI: deleteArrAPIFunc,
+} = require('./utils')
+
 // Program for API Calls
 const categoryFunc = require('./categories')
 const subCategoriFunc = require('./subCategories')
 const dealsFunc = require('./deals')
 let edekaData = require(filePath)
 
-// Program to Delete without API call
-const deleteArrAPIFunc = require('./deleteArrAPI')
 //constants
 const authorizationToken = process.env.AUTH_TOKEN
 

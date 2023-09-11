@@ -1,3 +1,4 @@
 const { generateIntegerArray } = require('./arrayUtils')
 const { contentTypeMap } = require('./contentType')
-module.exports = { generateIntegerArray, contentTypeMap }
+const deleteArrAPI = require('./deleteArrAPI')
+module.exports = { generateIntegerArray, contentTypeMap, deleteArrAPI }

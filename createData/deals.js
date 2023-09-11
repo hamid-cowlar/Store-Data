@@ -1,7 +1,6 @@
 const axios = require('axios')
 const fs = require('fs')
 const FormData = require('form-data')
-const { contentTypeMap } = require('./utils')
 const path = require('path')
 
 const dealsFunc = async (url, authorizationToken, jsonFile) => {
@@ -10,7 +9,7 @@ const dealsFunc = async (url, authorizationToken, jsonFile) => {
     for (const subCategoryData of categoryData.Subcategories) {
       let subCategoryId = subCategoryData.subCategoryId
       for (const data of subCategoryData.productItems) {
-        const logo = './Images/' + data.local_image_path
+        const logo = '../Images/' + data.local_image_path
         const form = new FormData()
         const headers = {
           ...form.getHeaders(),
@@ -33,17 +32,9 @@ const dealsFunc = async (url, authorizationToken, jsonFile) => {
         // Read the image file
         const image = fs.createReadStream(logo)
 
-        // Get the file extension
-        const fileExtension = path.extname(logo)
-
-        // Determine the content type based on the file extension
-        const contentType =
-          contentTypeMap[fileExtension.toLowerCase()] ||
-          'application/octet-stream'
-
         form.append('image', image, {
           filename: path.basename(logo),
-          contentType,
+          contentType: `image/${path.extname(logo).slice(1)}`,
         })
         try {
           const response = await axios.post(url, form, { headers })
