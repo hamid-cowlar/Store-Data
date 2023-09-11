@@ -3,6 +3,7 @@ const fs = require('fs')
 const FormData = require('form-data')
 const path = require('path')
 const { delay } = require('../utils')
+
 const dealsFunc = async (url, authorizationToken, jsonFile) => {
   for (const categoryData of jsonFile) {
     let categoryId = categoryData.categoryId
