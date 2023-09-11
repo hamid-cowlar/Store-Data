@@ -7,9 +7,9 @@ const {
 } = require('./utils')
 
 // Program for API Calls
-const categoryFunc = require('./categories')
-const subCategoriFunc = require('./subCategories')
-const dealsFunc = require('./deals')
+const categoryFunc = require('./createData/categories')
+const subCategoriFunc = require('./createData/subCategories')
+const dealsFunc = require('./createData/deals')
 let edekaData = require(filePath)
 
 //constants
