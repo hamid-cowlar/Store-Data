@@ -1,7 +1,8 @@
 const axios = require('axios')
 const fs = require('fs')
 const FormData = require('form-data')
-
+const { contentTypeMap } = require('./utils')
+const path = require('path')
 const subCategoriesFunc = async (
   url,
   authorizationToken,
@@ -12,8 +13,7 @@ const subCategoriesFunc = async (
     let categoryId = data.categoryId
     for (const innerData of data.Subcategories) {
       if ('default_subcategory' === innerData.subcategoryTitle) continue
-      const logo =
-        './Images/' + innerData.productItems[1].local_image_path + '.jpg'
+      const logo = './Images/' + innerData.productItems[1].local_image_path
       const link = 'www.testtt.com'
       const form = new FormData()
       const headers = {
@@ -28,10 +28,19 @@ const subCategoriesFunc = async (
       // Read the image file
       const image = fs.createReadStream(logo)
 
+      // Get the file extension
+      const fileExtension = path.extname(logo)
+
+      // Determine the content type based on the file extension
+      const contentType =
+        contentTypeMap[fileExtension.toLowerCase()] ||
+        'application/octet-stream'
+
       form.append('logo', image, {
-        filename: logo,
-        contentType: 'image/jpg',
+        filename: path.basename(logo),
+        contentType,
       })
+
       try {
         const response = await axios.post(url, form, { headers })
         console.log(response.data)

@@ -268,7 +268,8 @@
           }
         ]
       }
-    ]
+    ],
+    "categoryId": 112
   },
   {
     "CategoryTitle": "Lebensmittel",
@@ -3480,9 +3481,11 @@
             "ItemUnit": "54,81€/kg",
             "local_image_path": "Lebensmittel/Kaffee & Tee/jactassesprclass.jpg"
           }
-        ]
+        ],
+        "subCategoryId": 230
       }
-    ]
+    ],
+    "categoryId": 113
   },
   {
     "CategoryTitle": "Lebensmittel",
@@ -4201,9 +4204,11 @@
             "ItemUnit": "15,27€/l",
             "local_image_path": "Lebensmittel/Internationales/lee_kum_kee_sojasauce_dunkel_150ml.jpg"
           }
-        ]
+        ],
+        "subCategoryId": 231
       }
-    ]
+    ],
+    "categoryId": 113
   },
   {
     "CategoryTitle": "Bio-Produkte",
@@ -7181,9 +7186,11 @@
             "ItemUnit": "22,45€/kg",
             "local_image_path": "Bio-Produkte/Bio Marken/echt_hllische_bio_leberwurst_200_g(1).jpg"
           }
-        ]
+        ],
+        "subCategoryId": 232
       }
-    ]
+    ],
+    "categoryId": 114
   },
   {
     "CategoryTitle": "Lebensmittel",
@@ -9756,9 +9763,11 @@
             "ItemUnit": "8,31€/kg",
             "local_image_path": "Lebensmittel/Fertiggerichte/sbkasseler.jpg"
           }
-        ]
+        ],
+        "subCategoryId": 233
       }
-    ]
+    ],
+    "categoryId": 113
   },
   {
     "CategoryTitle": "Lebensmittel",
@@ -16246,9 +16255,11 @@
             "ItemUnit": "20,82€/kg",
             "local_image_path": "Lebensmittel/Süß & Salzig/nicnacs.jpg"
           }
-        ]
+        ],
+        "subCategoryId": 234
       }
-    ]
+    ],
+    "categoryId": 113
   },
   {
     "CategoryTitle": "Lebensmittel",
@@ -19262,9 +19273,11 @@
             "ItemUnit": "9,56€/kg",
             "local_image_path": "Bio-Produkte/Bio Marken/bondubiokidboh.jpg"
           }
-        ]
+        ],
+        "subCategoryId": 235
       }
-    ]
+    ],
+    "categoryId": 113
   },
   {
     "CategoryTitle": "Lebensmittel",
@@ -20775,9 +20788,11 @@
             "ItemUnit": "6,98€/kg",
             "local_image_path": "Lebensmittel/Beilagen/bio_edeka_jasmin_duftreis_400g.jpg"
           }
-        ]
+        ],
+        "subCategoryId": 236
       }
-    ]
+    ],
+    "categoryId": 113
   },
   {
     "CategoryTitle": "Lebensmittel",
@@ -25375,9 +25390,11 @@
             "ItemUnit": "3,73€/kg",
             "local_image_path": "Lebensmittel/Soßen/mutti_tompolpe_pomodoro_400g.jpg"
           }
-        ]
+        ],
+        "subCategoryId": 237
       }
-    ]
+    ],
+    "categoryId": 113
   },
   {
     "CategoryTitle": "Lebensmittel",
@@ -28085,9 +28102,11 @@
             "ItemUnit": "11,85€/kg",
             "local_image_path": "Lebensmittel/Fertiggerichte/knorr_bouillon_pur_gemse_168_g.jpg"
           }
-        ]
+        ],
+        "subCategoryId": 238
       }
-    ]
+    ],
+    "categoryId": 113
   },
   {
     "CategoryTitle": "Lebensmittel",
@@ -31065,9 +31084,11 @@
             "ItemUnit": "14,58€/kg",
             "local_image_path": "Bio-Produkte/Bio Marken/bio_edeka_tahin_sesammus_260g.jpg"
           }
-        ]
+        ],
+        "subCategoryId": 239
       }
-    ]
+    ],
+    "categoryId": 113
   },
   {
     "CategoryTitle": "Lebensmittel",
@@ -32155,9 +32176,11 @@
             "ItemUnit": "10,90€/kg",
             "local_image_path": "Lebensmittel/Backen & Desserts/edeka_zuckerstreusel_100g.jpg"
           }
-        ]
+        ],
+        "subCategoryId": 240
       }
-    ]
+    ],
+    "categoryId": 113
   },
   {
     "CategoryTitle": "Lebensmittel",
@@ -33929,9 +33952,11 @@
             "ItemUnit": "2,39€/lzzgl.0,25€Pfand",
             "local_image_path": "Lebensmittel/Getränke/booster_wassermelone_033l_dpg.jpg"
           }
-        ]
+        ],
+        "subCategoryId": 241
       }
-    ]
+    ],
+    "categoryId": 113
   },
   {
     "CategoryTitle": "Wein/ Spirituosen",
@@ -36144,9 +36169,11 @@
             "ItemUnit": "15,32€/l",
             "local_image_path": "Wein/ Spirituosen/Rotwein/quietum.jpg"
           }
-        ]
+        ],
+        "subCategoryId": 242
       }
-    ]
+    ],
+    "categoryId": 115
   },
   {
     "CategoryTitle": "Bio-Produkte",
@@ -36820,9 +36847,11 @@
             "ItemUnit": "366,33€/kg",
             "local_image_path": "Bio-Produkte/Getränke von Alnatura/alnatura_bio_grner_tee_gemhlen.jpg"
           }
-        ]
+        ],
+        "subCategoryId": 243
       }
-    ]
+    ],
+    "categoryId": 114
   },
   {
     "CategoryTitle": "Bio-Produkte",
@@ -37964,9 +37993,11 @@
             "ItemUnit": "7,72€/kg",
             "local_image_path": "Bio-Produkte/Bio Marken/edeka_bio_vegan_streichcreme_toskana_180g.jpg"
           }
-        ]
+        ],
+        "subCategoryId": 244
       }
-    ]
+    ],
+    "categoryId": 114
   },
   {
     "CategoryTitle": "Bio-Produkte",
@@ -40674,9 +40705,11 @@
             "ItemUnit": "21,90€/kg",
             "local_image_path": "Bio-Produkte/Lebensmittel von Alnatura/bio_alnatura_cappuccinoschokolade_100g.jpg"
           }
-        ]
+        ],
+        "subCategoryId": 245
       }
-    ]
+    ],
+    "categoryId": 114
   },
   {
     "CategoryTitle": "Jetzt wird gerettet!",
@@ -40884,7 +40917,8 @@
           }
         ]
       }
-    ]
+    ],
+    "categoryId": 116
   },
   {
     "CategoryTitle": "Fürs Büro",
@@ -41164,7 +41198,8 @@
           }
         ]
       }
-    ]
+    ],
+    "categoryId": 117
   },
   {
     "CategoryTitle": "Freizeit/Garten",
@@ -41228,7 +41263,8 @@
           }
         ]
       }
-    ]
+    ],
+    "categoryId": 118
   },
   {
     "CategoryTitle": "Drogerie",
@@ -41326,9 +41362,11 @@
             "ItemUnit": "437,63€/kg",
             "local_image_path": "Drogerie/Erkältung/tiger_balm_weiss_194g.jpg"
           }
-        ]
+        ],
+        "subCategoryId": 246
       }
-    ]
+    ],
+    "categoryId": 119
   },
   {
     "CategoryTitle": "Drogerie",
@@ -41381,9 +41419,11 @@
             "ItemUnit": "0,79€/st",
             "local_image_path": "Drogerie/Raucherbedarf/tomreibrad-feuerzeug.jpg"
           }
-        ]
+        ],
+        "subCategoryId": 247
       }
-    ]
+    ],
+    "categoryId": 119
   },
   {
     "CategoryTitle": "Drogerie",
@@ -41616,9 +41656,11 @@
             "ItemUnit": "38,86€/kg",
             "local_image_path": "Drogerie/Nahrungsergänzungsmittel/ps5kprotshakeschokonougat.jpg"
           }
-        ]
+        ],
+        "subCategoryId": 248
       }
-    ]
+    ],
+    "categoryId": 119
   },
   {
     "CategoryTitle": "Drogerie",
@@ -42976,9 +43018,11 @@
             "ItemUnit": "43,82€/kg",
             "local_image_path": "Drogerie/Haushalt/ycpeppin.jpg"
           }
-        ]
+        ],
+        "subCategoryId": 249
       }
-    ]
+    ],
+    "categoryId": 119
   },
   {
     "CategoryTitle": "Drogerie",
@@ -44408,9 +44452,11 @@
             "ItemUnit": "3,93€/kg",
             "local_image_path": "Drogerie/Tiernahrung/edeka_feine_bissen_mit_geflgel_hundefutter_nass_150_g.jpg"
           }
-        ]
+        ],
+        "subCategoryId": 250
       }
-    ]
+    ],
+    "categoryId": 119
   },
   {
     "CategoryTitle": "Drogerie",
@@ -46587,9 +46633,11 @@
             "ItemUnit": "0,07€/por",
             "local_image_path": "Drogerie/Reinigen & Waschen/vernel_weichspamp252ler_frischer_morgen_34wl_850ml.jpg"
           }
-        ]
+        ],
+        "subCategoryId": 251
       }
-    ]
+    ],
+    "categoryId": 119
   },
   {
     "CategoryTitle": "Drogerie",
@@ -47371,9 +47419,11 @@
             "ItemUnit": "0,04€/st",
             "local_image_path": "Drogerie/Körperhygiene/edeka_elkos_women_tampon_normal_80st.jpg"
           }
-        ]
+        ],
+        "subCategoryId": 252
       }
-    ]
+    ],
+    "categoryId": 119
   },
   {
     "CategoryTitle": "Drogerie",
@@ -52538,9 +52588,11 @@
             "ItemUnit": "6,36€/l",
             "local_image_path": "Drogerie/Körperpflege/palmolive_naturals_duschcreme_milch_amp_honig_250ml.jpg"
           }
-        ]
+        ],
+        "subCategoryId": 253
       }
-    ]
+    ],
+    "categoryId": 119
   },
   {
     "CategoryTitle": "Drogerie",
@@ -52818,9 +52870,11 @@
             "ItemUnit": "0,13€/st",
             "local_image_path": "Drogerie/Baby & Kleinkind/edeka_elkos_baby_glck_windeln_gr3_midi_46st.jpg"
           }
-        ]
+        ],
+        "subCategoryId": 254
       }
-    ]
+    ],
+    "categoryId": 119
   },
   {
     "CategoryTitle": "Wein/ Spirituosen",
@@ -54178,9 +54232,11 @@
             "ItemUnit": "5,99€/l",
             "local_image_path": "Angebote/default_subcategory/freixenet_00_alkoholfrei_075l.jpg"
           }
-        ]
+        ],
+        "subCategoryId": 255
       }
-    ]
+    ],
+    "categoryId": 115
   },
   {
     "CategoryTitle": "Wein/ Spirituosen",
@@ -59066,9 +59122,11 @@
             "ItemUnit": "198,57€/l",
             "local_image_path": "Wein/ Spirituosen/Spirituosen/highland_park_18_jahre_single_malt_whisky.jpg"
           }
-        ]
+        ],
+        "subCategoryId": 256
       }
-    ]
+    ],
+    "categoryId": 115
   },
   {
     "CategoryTitle": "Wein/ Spirituosen",
@@ -59778,9 +59836,11 @@
             "ItemUnit": "9,99€/l",
             "local_image_path": "Wein/ Spirituosen/Roséweine/ypallday.jpg"
           }
-        ]
+        ],
+        "subCategoryId": 257
       }
-    ]
+    ],
+    "categoryId": 115
   },
   {
     "CategoryTitle": "Wein/ Spirituosen",
@@ -60058,8 +60118,10 @@
             "ItemUnit": "7,99€/l",
             "local_image_path": "Wein/ Spirituosen/Weißwein/durbachergbtrock.jpg"
           }
-        ]
+        ],
+        "subCategoryId": 258
       }
-    ]
+    ],
+    "categoryId": 115
   }
 ]

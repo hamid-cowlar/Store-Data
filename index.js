@@ -20,7 +20,7 @@ Category : 1
 SubCategory : 2
 deals : 3
 */
-const runapi = 0
+const runapi = 2
 const storeId = 1
 
 switch (runapi) {

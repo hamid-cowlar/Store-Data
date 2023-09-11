@@ -39,7 +39,7 @@ const categoryFunc = async (url, authorizationToken, storeId, jsonFile) => {
     const image = fs.createReadStream(logo)
 
     // Get the file extension
-    const fileExtension = path.extname(imageFilePath)
+    const fileExtension = path.extname(logo)
 
     // Determine the content type based on the file extension
     const contentType =
@@ -75,7 +75,6 @@ const categoryFunc = async (url, authorizationToken, storeId, jsonFile) => {
       }
     }
   }
-  console.log(jsonFile)
   fs.writeFileSync(
     './EdekaData.json',
     JSON.stringify(jsonFile, null, 2),
