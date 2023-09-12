@@ -12,17 +12,21 @@ const subCategoriesFunc = async (
   filePath
 ) => {
   let previousName
+  const headers = {
+    'Content-Type': `multipart/form-data`,
+    Authorization: authorizationToken,
+  }
 
   for (const data of jsonFile) {
     let categoryId = data.categoryId
     for (const innerData of data.Subcategories) {
       if ('default_subcategory' === innerData.subcategoryTitle) continue
       const logo = innerData.logo
-      const form = new FormData()
-      const headers = {
-        ...form.getHeaders(),
-        Authorization: authorizationToken,
+      if (!logo) {
+        console.log('image is required ')
+        continue
       }
+      const form = new FormData()
       form.append('storeId', storeId)
       form.append('categoryId', categoryId)
       if (previousName == innerData.subcategoryTitle) continue

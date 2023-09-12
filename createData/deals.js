@@ -5,16 +5,16 @@ const path = require('path')
 const { delay } = require('../utils')
 
 const dealsFunc = async (url, authorizationToken, jsonFile) => {
+  const headers = {
+    'Content-Type': `multipart/form-data`,
+    Authorization: authorizationToken,
+  }
   for (const categoryData of jsonFile) {
     let categoryId = categoryData.categoryId
     for (const subCategoryData of categoryData.Subcategories) {
       let subCategoryId = subCategoryData.subCategoryId
       for (const data of subCategoryData.productItems) {
         const form = new FormData()
-        const headers = {
-          ...form.getHeaders(),
-          Authorization: authorizationToken,
-        }
 
         form.append('categoryId', categoryId)
         form.append('name', data.ItemTitle)
@@ -38,6 +38,9 @@ const dealsFunc = async (url, authorizationToken, jsonFile) => {
             filename: path.basename(logo),
             contentType: `image/${path.extname(logo).slice(1)}`,
           })
+        } else {
+          console.log('image is required')
+          continue
         }
         await delay(2000)
         try {

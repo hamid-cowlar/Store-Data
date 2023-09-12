@@ -2,7 +2,6 @@ const axios = require('axios')
 const fs = require('fs')
 const FormData = require('form-data')
 const path = require('path')
-let name
 let nameArr = []
 let defaultVideo = './default.mp4'
 const categoryFunc = async (
@@ -12,19 +11,20 @@ const categoryFunc = async (
   jsonFile,
   filePath
 ) => {
+  const headers = {
+    'Content-Type': `multipart/form-data`,
+    Authorization: authorizationToken,
+  }
   for (const data of jsonFile) {
-    name = data.CategoryTitle
+    const name = data.CategoryTitle
     if (nameArr.includes(name)) continue
     nameArr.push(name)
-    const logo = data.Subcategories[0].productItems[0].local_image_path
+    const logo =
+      data.logo ?? data.Subcategories[0].productItems[0].local_image_path
     const link = data.link
     const form = new FormData()
     let videoPath = data.mediaContent
-    const headers = {
-      ...form.getHeaders(),
-      Authorization: authorizationToken,
-    }
-    if (!!link) {
+    if (link) {
       form.append('link', link)
     } else {
       if (!videoPath) {

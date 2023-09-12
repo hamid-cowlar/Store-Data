@@ -17,7 +17,7 @@ let authorizationToken = process.env.AUTH_TOKEN
 let mainURL =
   env === 'stage'
     ? 'https://api.stage.veeve-cms.cowlar.com'
-    : 'https://localhost:5001/api/v1'
+    : 'http://localhost:5001/api/v1'
 if (env === 'stage') {
   authorizationToken = process.env.STAGE_TOKEN
 }
@@ -25,40 +25,27 @@ const categoryUrl = `${mainURL}/categories`
 const subCategoriesUrl = `${mainURL}/subcategories`
 const dealsUrl = `${mainURL}/deals`
 
-/*
-Category : 1
-SubCategory : 2
-deals : 3
-*/
-const runapi = 3
 const storeId = 1
 
-switch (runapi) {
-  case 1:
-    categoryFunc(categoryUrl, authorizationToken, storeId, edekaData, filePath)
-    break
-  case 2:
-    subCategoriFunc(
-      subCategoriesUrl,
-      authorizationToken,
-      storeId,
-      edekaData,
-      filePath
-    )
-    break
-  case 3:
-    dealsFunc(dealsUrl, authorizationToken, edekaData)
-    break
-  default:
-    console.log(
-      `Please select According to require scenario :
-     Category : 1
-     SubCategory : 2
-     deals : 3
-  `
-    )
-    break
+const ApiCalls = async () => {
+  await categoryFunc(
+    categoryUrl,
+    authorizationToken,
+    storeId,
+    edekaData,
+    filePath
+  )
+  await subCategoriFunc(
+    subCategoriesUrl,
+    authorizationToken,
+    storeId,
+    edekaData,
+    filePath
+  )
+  await dealsFunc(dealsUrl, authorizationToken, edekaData)
 }
+ApiCalls()
+
 /*
 Delete According to id's in  Array :
 Category : 1
