@@ -11,7 +11,7 @@ const categoryFunc = require('./createData/categories')
 const subCategoriFunc = require('./createData/subCategories')
 const dealsFunc = require('./createData/deals')
 let edekaData = require(filePath)
-const env = ''
+const env = 'stage'
 //constants
 let authorizationToken = process.env.AUTH_TOKEN
 let mainURL =
@@ -25,16 +25,16 @@ const categoryUrl = `${mainURL}/categories`
 const subCategoriesUrl = `${mainURL}/subcategories`
 const dealsUrl = `${mainURL}/deals`
 
-const storeId = 1
+const storeId = 38
 
 const ApiCalls = async () => {
-  await categoryFunc(
-    categoryUrl,
-    authorizationToken,
-    storeId,
-    edekaData,
-    filePath
-  )
+  //await categoryFunc(
+  //  categoryUrl,
+  //  authorizationToken,
+  //  storeId,
+  //  edekaData,
+  //  filePath
+  //)
   await subCategoriFunc(
     subCategoriesUrl,
     authorizationToken,
@@ -42,7 +42,7 @@ const ApiCalls = async () => {
     edekaData,
     filePath
   )
-  await dealsFunc(dealsUrl, authorizationToken, edekaData)
+  //await dealsFunc(dealsUrl, authorizationToken, edekaData)
 }
 ApiCalls()
 

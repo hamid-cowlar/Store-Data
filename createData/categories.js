@@ -53,6 +53,7 @@ const categoryFunc = async (
         if (edata.CategoryTitle == response.data.data.name) {
           return {
             ...edata,
+            storeId: response.data.data.id,
             categoryId: response.data.data.id,
           }
         }
@@ -72,6 +73,7 @@ const categoryFunc = async (
       }
     }
   }
+  console.log(jsonFile)
   fs.writeFileSync(filePath, JSON.stringify(jsonFile, null, 2), 'utf-8')
 }
 
