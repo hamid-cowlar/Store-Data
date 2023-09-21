@@ -15,7 +15,7 @@ const categoryFunc = async (
     'Content-Type': `multipart/form-data`,
     Authorization: authorizationToken,
   }
-  for (const data of jsonFile) {
+  for (const [index, data] of Object.entries(jsonFile)) {
     const name = data.CategoryTitle
     if (nameArr.includes(name)) continue
     nameArr.push(name)
@@ -48,17 +48,17 @@ const categoryFunc = async (
     })
     try {
       const response = await axios.post(url, form, { headers })
-      console.log(response.data)
       jsonFile = jsonFile.map((edata) => {
         if (edata.CategoryTitle == response.data.data.name) {
           return {
             ...edata,
-            storeId: response.data.data.id,
+            storeId: response.data.data.storeId,
             categoryId: response.data.data.id,
           }
         }
         return edata
       })
+      console.log(`Done ${+index + 1} from ${jsonFile.length}`)
     } catch (error) {
       if (error.response) {
         console.error(
@@ -73,8 +73,9 @@ const categoryFunc = async (
       }
     }
   }
-  console.log(jsonFile)
   fs.writeFileSync(filePath, JSON.stringify(jsonFile, null, 2), 'utf-8')
+  console.log('Category Upload Done')
+  return jsonFile
 }
 
 module.exports = categoryFunc

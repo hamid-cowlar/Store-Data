@@ -19,7 +19,7 @@ const subCategoriesFunc = async (
 
   for (const data of jsonFile) {
     let categoryId = data.categoryId
-    for (const innerData of data.Subcategories) {
+    for (const [index, innerData] of Object.entries(data.Subcategories)) {
       if ('default_subcategory' === innerData.subcategoryTitle) continue
       const logo = innerData.logo
       if (!logo) {
@@ -51,7 +51,6 @@ const subCategoriesFunc = async (
       await delay(1000)
       try {
         const response = await axios.post(url, form, { headers })
-        console.log(response.data)
         jsonFile = jsonFile.map((edata) => {
           return {
             ...edata,
@@ -63,6 +62,7 @@ const subCategoriesFunc = async (
             }),
           }
         })
+        console.log(`Done ${+index + 1} from ${data.Subcategories.length}`)
       } catch (error) {
         if (error.response) {
           console.error(
@@ -78,10 +78,9 @@ const subCategoriesFunc = async (
       }
     }
   }
-  jsonFile.forEach((dataa) => {
-    console.log(dataa)
-  })
   fs.writeFileSync(filePath, JSON.stringify(jsonFile, null, 2), 'utf-8')
+  console.log('SubCategory Upload Done')
+  return jsonFile
 }
 
 module.exports = subCategoriesFunc

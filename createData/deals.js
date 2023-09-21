@@ -13,7 +13,9 @@ const dealsFunc = async (url, authorizationToken, jsonFile) => {
     let categoryId = categoryData.categoryId
     for (const subCategoryData of categoryData.Subcategories) {
       let subCategoryId = subCategoryData.subCategoryId
-      for (const data of subCategoryData.productItems) {
+      for (const [index, data] of Object.entries(
+        subCategoryData.productItems
+      )) {
         const form = new FormData()
 
         form.append('categoryId', categoryId)
@@ -44,8 +46,10 @@ const dealsFunc = async (url, authorizationToken, jsonFile) => {
         }
         await delay(2000)
         try {
-          const response = await axios.post(url, form, { headers })
-          console.log(response.data)
+          await axios.post(url, form, { headers })
+          console.log(
+            `Done ${+index + 1} from ${subCategoryData.productItems.length}`
+          )
         } catch (error) {
           if (error.response) {
             console.error(

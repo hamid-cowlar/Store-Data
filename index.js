@@ -1,48 +1,53 @@
 require('dotenv').config()
 //Json File Path
-const filePath = './output.json'
 const {
   generateIntegerArray,
   deleteArrAPI: deleteArrAPIFunc,
 } = require('./utils')
+const {
+  AUTH_TOKEN,
+  ENV,
+  JSON_FILE_PATH: filePath,
+  STORE_ID,
+  DELETE_API,
+  DELETE_FROM_ID,
+  DELETE_TO_ID,
+} = process.env
 
-// Program for API Calls
 const categoryFunc = require('./createData/categories')
 const subCategoriFunc = require('./createData/subCategories')
 const dealsFunc = require('./createData/deals')
-let edekaData = require(filePath)
-const env = 'stage'
+let jsonData = require(filePath)
 //constants
-let authorizationToken = process.env.AUTH_TOKEN
 let mainURL =
-  env === 'stage'
+  ENV === 'dev'
+    ? 'https://api.dev.veeve-cms.cowlar.com'
+    : ENV === 'stage'
     ? 'https://api.stage.veeve-cms.cowlar.com'
+    : ENV === 'prod'
+    ? 'https://api.veeve-cms.cowlar.com'
     : 'http://localhost:5001/api/v1'
-if (env === 'stage') {
-  authorizationToken = process.env.STAGE_TOKEN
-}
+
 const categoryUrl = `${mainURL}/categories`
 const subCategoriesUrl = `${mainURL}/subcategories`
 const dealsUrl = `${mainURL}/deals`
 
-const storeId = 38
-
 const ApiCalls = async () => {
-  //await categoryFunc(
-  //  categoryUrl,
-  //  authorizationToken,
-  //  storeId,
-  //  edekaData,
-  //  filePath
-  //)
-  await subCategoriFunc(
-    subCategoriesUrl,
-    authorizationToken,
-    storeId,
-    edekaData,
+  jsonData = await categoryFunc(
+    categoryUrl,
+    AUTH_TOKEN,
+    STORE_ID,
+    jsonData,
     filePath
   )
-  //await dealsFunc(dealsUrl, authorizationToken, edekaData)
+  jsonData = await subCategoriFunc(
+    subCategoriesUrl,
+    AUTH_TOKEN,
+    STORE_ID,
+    jsonData,
+    filePath
+  )
+  await dealsFunc(dealsUrl, AUTH_TOKEN, jsonData)
 }
 ApiCalls()
 
@@ -52,27 +57,26 @@ Category : 1
 SubCategory : 2
 deals : 3
 */
-const deleteAPI = 0
-switch (deleteAPI) {
+switch (DELETE_API) {
   case 1:
     deleteArrAPIFunc(
       categoryUrl,
-      generateIntegerArray(104, 225),
-      authorizationToken
+      generateIntegerArray(DELETE_FROM_ID, DELETE_TO_ID),
+      AUTH_TOKEN
     )
     break
   case 2:
     deleteArrAPIFunc(
       subCategoriesUrl,
-      generateIntegerArray(409, 421),
-      authorizationToken
+      generateIntegerArray(DELETE_FROM_ID, DELETE_TO_ID),
+      AUTH_TOKEN
     )
     break
   case 3:
     deleteArrAPIFunc(
       dealsUrl,
-      generateIntegerArray(163, 256),
-      authorizationToken
+      generateIntegerArray(DELETE_FROM_ID, DELETE_TO_ID),
+      AUTH_TOKEN
     )
     break
   default:
