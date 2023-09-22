@@ -4,20 +4,13 @@ const {
   generateIntegerArray,
   deleteArrAPI: deleteArrAPIFunc,
 } = require('./utils')
-const {
-  AUTH_TOKEN,
-  ENV,
-  JSON_FILE_PATH: filePath,
-  STORE_ID,
-  DELETE_API,
-  DELETE_FROM_ID,
-  DELETE_TO_ID,
-} = process.env
-
+const { AUTH_TOKEN, ENV, STORE_ID, DELETE_API, DELETE_FROM_ID, DELETE_TO_ID } =
+  process.env
+const filePath = './output.json'
 const categoryFunc = require('./createData/categories')
 const subCategoriFunc = require('./createData/subCategories')
 const dealsFunc = require('./createData/deals')
-let jsonData = require(filePath)
+let jsonData = require('./output.json')
 //constants
 let mainURL =
   ENV === 'dev'
